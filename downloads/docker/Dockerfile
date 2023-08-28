@@ -6,20 +6,21 @@ RUN apt-get update -y && \
     apt-get clean
 
 # Create a directory for the app
-RUN mkdir app
+RUN mkdir /app
 
 # Install python packages
 RUN pip3 install aider-chat
 
 # Create the script
-RUN echo '#!/bin/bash' > create_user.sh && \
-    echo 'groupadd -g $GID dockergrp' >> create_user.sh && \
-    echo 'useradd -u $UID -g $GID -m -s /bin/bash dockeruser' >> create_user.sh && \
-    echo 'su dockeruser' >> create_user.sh && \
-    echo 'exec "$@"' >> create_user.sh && \
-    chmod +x create_user.sh
+RUN echo '#!/bin/bash' > /create_user.sh && \
+    echo 'groupadd -g $GID dockergrp' >> /create_user.sh && \
+    echo 'useradd -u $UID -g $GID -m -s /bin/bash dockeruser' >> /create_user.sh && \
+    echo 'su dockeruser' >> /create_user.sh && \
+    echo 'exec "$@"' >> /create_user.sh && \
+    chmod +x /create_user.sh && \
+    /bin/bash
 
-WORKDIR app
+WORKDIR /app
 
 # Use ENTRYPOINT to allow parameters to be passed in
-ENTRYPOINT ["/bin/bash", "create_user.sh"]
+ENTRYPOINT ["/bin/bash", "/create_user.sh"]
