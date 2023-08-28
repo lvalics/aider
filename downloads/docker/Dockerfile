@@ -8,6 +8,9 @@ RUN apt-get update -y && \
 # Create a directory for the app
 RUN mkdir /app
 
+# A default aider commands to use, easy to modify (just for starting point)
+COPY .aider.conf.yml /app/.aider.conf.yml
+
 # Install python packages
 RUN pip3 install aider-chat
 

@@ -1,0 +1,24 @@
+#model: gpt-3.5-turbo-16k
+model: gpt-4
+#edit-format: 
+map-tokens: 0 #0 to disable, 8192, 16384, 32768
+input-history-fil: .aider.input.history
+chat-history-file: .aider.chat.history.md
+dark-mode: True
+#light-mode: True
+pretty: True
+stream: True
+user-input-color: #00cc00
+#tool-output-color: 
+tool-error-color: red
+assistant-output-color: #0088ff
+#code-theme: default # monokai, solarized-dark, solarized-light
+show-diffs: False
+#git: False
+auto-commits: False
+dirty-commits: False
+dry-run: True
+#apply: filename.txt
+#yes: False
+verbose: False
+show-repo-map: False
